@@ -6,14 +6,13 @@
  */
 export const omit = (obj, ...fields) => {
   const args = [...fields];
+  const copy = {};
 
-  const object = {};
-
-  Object.assign(object, obj);
-
-  for (let item of args) {
-    delete object[item];
+  for (const [key, value] of Object.entries(obj)) {
+    if (!args.includes(key)) {
+      copy[key] = value;
+    }
   }
 
-  return object;
+  return copy;
 };
