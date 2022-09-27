@@ -5,5 +5,14 @@
  * @returns {object} - returns the new object
  */
 export const omit = (obj, ...fields) => {
+  const args = [...fields];
+  const copy = {};
 
+  for (const [key, value] of Object.entries(obj)) {
+    if (!args.includes(key)) {
+      copy[key] = value;
+    }
+  }
+
+  return copy;
 };
